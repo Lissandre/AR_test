@@ -10,6 +10,7 @@ export default class World {
     this.time = options.time
     this.debug = options.debug
     this.assets = options.assets
+    this.controller = options.controller
 
     // Set up
     this.container = new Object3D()
@@ -71,6 +72,7 @@ export default class World {
     this.suzanne = new Suzanne({
       time: this.time,
       assets: this.assets,
+      controller: this.controller,
     })
     this.container.add(this.suzanne.container)
   }

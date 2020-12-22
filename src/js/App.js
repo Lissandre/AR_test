@@ -40,6 +40,8 @@ export default class App {
     this.renderer.setPixelRatio(window.devicePixelRatio)
     this.renderer.setSize(this.sizes.viewport.width, this.sizes.viewport.height)
     document.body.appendChild(ARButton.createButton(this.renderer))
+    this.controller = this.renderer.xr.getController(0)
+    this.scene.add(this.controller)
     // Resize renderer on resize event
     this.sizes.on('resize', () => {
       this.renderer.setSize(
@@ -47,7 +49,6 @@ export default class App {
         this.sizes.viewport.height
       )
     })
-    console.log(this.renderer.xr)
     this.renderer.setAnimationLoop(() => {
       this.renderer.render( this.scene, this.camera.camera )
     })
@@ -68,6 +69,7 @@ export default class App {
       time: this.time,
       debug: this.debug,
       assets: this.assets,
+      controller: this.controller,
     })
     // Add world to scene
     this.scene.add(this.world.container)
