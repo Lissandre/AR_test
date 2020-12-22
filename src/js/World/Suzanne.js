@@ -11,15 +11,11 @@ export default class Suzanne {
     this.container.name = 'Suzanne'
 
     this.createSuzanne()
-    this.setMovement()
   }
   createSuzanne() {
     this.suzanne = this.assets.models.suzanne.scene
+    this.suzanne.position.set(0,0,-0.5)
+    this.suzanne.scale.set(0.1,0.1,0.1)
     this.container.add(this.suzanne)
-  }
-  setMovement() {
-    this.time.on('tick', () => {
-      this.suzanne.rotation.y += 0.005
-    })
   }
 }

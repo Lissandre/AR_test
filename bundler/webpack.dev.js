@@ -13,6 +13,7 @@ module.exports = webpackMerge.merge(
     devServer: {
       host: '0.0.0.0',
       useLocalIp: true,
+      https: true,
       contentBase: './dist',
       open: true,
       hot: true,

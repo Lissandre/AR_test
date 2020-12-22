@@ -1,4 +1,5 @@
-import { Scene, WebGLRenderer } from 'three'
+import { Scene, WebGLRenderer, MeshPhongMaterial, Mesh, CylinderBufferGeometry } from 'three'
+import { ARButton } from 'three/examples/jsm/webxr/ARButton'
 import * as dat from 'dat.gui'
 
 import Sizes from '@tools/Sizes'
@@ -32,11 +33,13 @@ export default class App {
       alpha: true,
       antialias: true,
     })
+    this.renderer.xr.enabled = true
     // Set background color
-    this.renderer.setClearColor(0x212121, 1)
+    this.renderer.setClearColor(0x212121, 0)
     // Set renderer pixel ratio & sizes
     this.renderer.setPixelRatio(window.devicePixelRatio)
     this.renderer.setSize(this.sizes.viewport.width, this.sizes.viewport.height)
+    document.body.appendChild(ARButton.createButton(this.renderer))
     // Resize renderer on resize event
     this.sizes.on('resize', () => {
       this.renderer.setSize(
@@ -44,9 +47,9 @@ export default class App {
         this.sizes.viewport.height
       )
     })
-    // Set RequestAnimationFrame with 60ips
-    this.time.on('tick', () => {
-      this.renderer.render(this.scene, this.camera.camera)
+    console.log(this.renderer.xr)
+    this.renderer.setAnimationLoop(() => {
+      this.renderer.render( this.scene, this.camera.camera )
     })
   }
   setCamera() {
