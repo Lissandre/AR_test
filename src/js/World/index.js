@@ -2,7 +2,7 @@ import { AxesHelper, Object3D } from 'three'
 
 import AmbientLightSource from './AmbientLight'
 import PointLightSource from './PointLight'
-import Suzanne from './Suzanne'
+import Tube from './Tube'
 
 export default class World {
   constructor(options) {
@@ -27,7 +27,7 @@ export default class World {
   init() {
     this.setAmbientLight()
     this.setPointLight()
-    this.setSuzanne()
+    this.setTube()
   }
   setLoader() {
     this.loadDiv = document.querySelector('.loadScreen')
@@ -68,12 +68,11 @@ export default class World {
     })
     this.container.add(this.light.container)
   }
-  setSuzanne() {
-    this.suzanne = new Suzanne({
+  setTube() {
+    this.tube = new Tube({
       time: this.time,
-      assets: this.assets,
       controller: this.controller,
     })
-    this.container.add(this.suzanne.container)
+    this.container.add(this.tube.container)
   }
 }

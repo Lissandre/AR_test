@@ -1,4 +1,4 @@
-import { Scene, WebGLRenderer, MeshPhongMaterial, Mesh, CylinderBufferGeometry } from 'three'
+import { Scene, WebGLRenderer } from 'three'
 import { ARButton } from 'three/examples/jsm/webxr/ARButton'
 import * as dat from 'dat.gui'
 
@@ -50,7 +50,7 @@ export default class App {
       )
     })
     this.renderer.setAnimationLoop(() => {
-      this.renderer.render( this.scene, this.camera.camera )
+      this.renderer.render(this.scene, this.camera.camera)
     })
   }
   setCamera() {
